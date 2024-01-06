@@ -20,5 +20,5 @@ steps:
   ##  args: [ 'artifacts', 'docker', 'tags', 'delete', 'asia-east1-docker.pkg.dev/$PROJECT_ID/ga-erp/up:latest' ]
   - id: 'tag container image to latest'
     name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'artifacts', 'docker', 'tags', 'add', 'asia-east1-docker.pkg.dev/$PROJECT_ID/nutc/csie/ajax/blog-frontend/blog-frontend:$BRANCH_NAME-$SHORT_SHA', 'asia-east1-docker.pkg.dev/$PROJECT_ID/nutc/csie/ajax/blog-frontend/blog-frontend:latest' ]
+    args: [ 'artifacts', 'docker', 'tags', 'add', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog-frontend/blog-frontend:$BRANCH_NAME-$SHORT_SHA', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog-frontend/blog-frontend:latest' ]
 
