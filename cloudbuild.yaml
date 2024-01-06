@@ -10,11 +10,11 @@ steps:
   ## container image 
   - id: 'Build container image'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '--no-cache', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blogfrontend:$BRANCH_NAME-$SHORT_SHA', '-f', 'Dockerfile', '.' ]
+    args: [ 'build', '--no-cache', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog_frontend:$BRANCH_NAME-$SHORT_SHA', '-f', 'Dockerfile', '.' ]
 
   - id: 'push container image to artifact registry'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blogfrontend:$BRANCH_NAME-$SHORT_SHA' ]
+    args: [ 'push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog_frontend:$BRANCH_NAME-$SHORT_SHA' ]
 
   ##- name: 'gcr.io/cloud-builders/gcloud'
   ##  args: [ 'artifacts', 'docker', 'tags', 'delete', 'asia-east1-docker.pkg.dev/$PROJECT_ID/ga-erp/up:latest' ]
