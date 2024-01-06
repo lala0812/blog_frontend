@@ -14,7 +14,7 @@ steps:
 
   - id: 'push container image to artifact registry'
     name: 'gcr.io/cloud-builders/docker'    
-    args: [ 'push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog-frontend/blog-frontend:$BRANC H_NAME-$SHORT_SHA' ]
+    args: [ 'push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/blog-frontend/blog-frontend:$BRANCH_NAME-$SHORT_SHA' ]
   ## HOST-NAME/PROJECT-ID/REPOSITORY/IMAGE
   ##- name: 'gcr.io/cloud-builders/gcloud'
   ##  args: [ 'artifacts', 'docker', 'tags', 'delete', 'asia-east1-docker.pkg.dev/$PROJECT_ID/ga-erp/up:latest' ]
