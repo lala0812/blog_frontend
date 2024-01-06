@@ -8,14 +8,13 @@ steps:
     entrypoint: npm
     args: ['run', 'build']
   ## container image 
-  ##                                -t名稱 東亞區域的docker倉庫位置/專案ID/.../倉庫名稱:版本
-- id: 'Build container image'
-  name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '--no-cache', '-t', 'asia-east1-docker.pkg.dev/skilled-booking-401206/blog-frontend:$BRANCH_NAME-$SHORT_SHA', '-f', 'Dockerfile', '.' ]
+  - id: 'Build container image'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '--no-cache', '-t', 'asia-east1-docker.pkg.dev/skilled-booking-401206/blog-frontend:$BRANCH_NAME-$SHORT_SHA', '-f', 'Dockerfile', '.' ]
 
-- id: 'push container image to artifact registry'
-  name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'asia-east1-docker.pkg.dev/skilled-booking-401206/blog-frontend:$BRANCH_NAME-$SHORT_SHA' ]
+  - id: 'push container image to artifact registry'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-east1-docker.pkg.dev/skilled-booking-401206/blog-frontend:$BRANCH_NAME-$SHORT_SHA' ]
 
   ##- name: 'gcr.io/cloud-builders/gcloud'
   ##  args: [ 'artifacts', 'docker', 'tags', 'delete', 'asia-east1-docker.pkg.dev/$PROJECT_ID/ga-erp/up:latest' ]
