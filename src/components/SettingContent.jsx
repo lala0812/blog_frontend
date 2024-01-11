@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import ChangePasswordModal from "./ChangePasswordModal";
 
 
+
 export const SettingContent=(props) => {
   const [editedUsername, setEditedUsername] = React.useState("");
   const [editedEmail, setEditedEmail] = React.useState("");
@@ -12,9 +13,12 @@ export const SettingContent=(props) => {
   const [UserId, setUserId] = React.useState(null);
   const [User, setUser] = React.useState(null);
 
+  // const [Username, setUsername] = React.useState(null);
+  // const [Email, setEmail] = React.useState(null);
+  
   const [modalShow, setModalShow] = React.useState(false);
   const [modalTittle, setModalTittle] = React.useState("");
-
+  
   useEffect(() => {
     if (props.loginUserId != null) {
       setIsLoggedIn(true);
@@ -40,7 +44,7 @@ export const SettingContent=(props) => {
       email: User.email,
     };
     let resJson = await UpdateUserById(UpdateUser, UserId);
-    if (resJson.message === "update user success") {
+    if (resJson.message == "update user success") {
       alert("更改成功");
       window.location.href = "/setting";
     } else {
@@ -55,11 +59,11 @@ export const SettingContent=(props) => {
       email: editedEmail,
     };
     let resJson = await UpdateUserById(UpdateUser, UserId);
-    if (resJson.message === "update user success") {
+    if (resJson.message == "update user success") {
       alert("更改成功");
       window.location.href = "/setting";
     } 
-    else if(resJson.message === "Invalid email format."){
+    else if(resJson.message == "Invalid email format."){
       alert("Email格式錯誤");
     }
     else {
@@ -75,53 +79,62 @@ export const SettingContent=(props) => {
   };
 
 
-  return(
-    <Fragment>
-      {isLoggedIn && User? (
-        <div style={{marginTop:'50px', marginLeft:'375px'}}>
-          <div className='title'>
-            <h1>Setting</h1>
-          </div>
-          <div className='profile' style={container}>
-            <h4>使用者名稱: {User.username}</h4>
-            <label>使用者名稱:</label>
-                <input
-                  type="text"
-                  value={editedUsername}
-                  onChange={(e) => setEditedUsername(e.target.value)}
-                />
-                <button onClick={changeUsername}>更改</button>
-            <br/>
-            <br/>
+return (
+  <Fragment>
+    {isLoggedIn && User? (
+    <div style={{ margin: '20px', padding: '20px 0vh 20px 0', background: 'none'}}>
+      <div className='card login-container1'>
+        <div className='user-info'>
+          <img src="/456.png" alt="User Avatar" className="avatar" />
+          <div className="info">
+            <h4>User: {User.username}</h4>
             <h4>Email: {User.email}</h4>
-            <label>Email:</label>
-                <input
-                  type="text"
-                  value={editedEmail}
-                  onChange={(e) => setEditedEmail(e.target.value)}
-                />
-                <button onClick={changeEmail}>更改</button>
-            <br/>
-            <br/>
-            <h4>密碼更改</h4>
-            <Button variant="primary" onClick={showChangePasswordModal}>更改密碼</Button>
           </div>
         </div>
-        ) : (
+
+        <div className="input-section" style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-            {/* <h1>404 Not Found</h1> */}
+            <input
+              placeholder='Username'
+              type="text"
+              value={editedUsername}
+              onChange={(e) => setEditedUsername(e.target.value)}
+            />
+            <button onClick={changeUsername}>更改</button>
+            <br/>
+            <br/>
+            <input
+              placeholder='Email'
+              type="text"
+              value={editedEmail}
+              onChange={(e) => setEditedEmail(e.target.value)}
+            />
+            <button onClick={changeEmail}>更改</button>
+            <br/>
+            <br/>
           </div>
-        )
-      }
-      <ChangePasswordModal 
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        backdrop="static"
-        title={modalTittle}
-        UserId={UserId}
-      />
-    </Fragment>
-  )
+          <div>
+            <h4>密碼</h4>
+            <Button className="login-form-button1" onClick={showChangePasswordModal}>視窗</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+    ) : (
+      <div>
+        <h1>404 Not Found</h1>
+      </div>
+    )}
+    <ChangePasswordModal 
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      backdrop="static"
+      title={modalTittle}
+      UserId={UserId}
+    />
+  </Fragment>
+);
 }
 
 export default SettingContent;
+

@@ -55,40 +55,46 @@ export const MyArticlesContent=(props) => {
       updateArticleList();
     });
   }
+  
 
+
+  // 文章列表
   const ArticleList = ({ articles }) => {
     return (
-      <ListGroup>
+      <div className="bd-example m-0 card border-1 mt-3">
         {articles.map((article) => {
           const dateObject = new Date(article.publish_date);
-          const localPublishDate = dateObject.toLocaleString();
-  
+          const localPublishDate = dateObject.toLocaleDateString('zh-tw', { year: 'numeric', month: 'long', day: 'numeric' });
+    
           return (
-            <ListGroup.Item key={article.id}>
-              <div className="row">
-                <div className="col">
-                  <p>{article.user.username}</p>
-                  <h4>{article.title}</h4>
-                  <p>{article.content}</p>
-                  <p>{localPublishDate}</p>
+            <ListGroup.Item key={article.id}  className="mb-3 mt-3 mr-3 ml-3">
+              <div className="card">
+                <div className="card-header text-left"> 
+                  <h5 className="card-title">{article.title}</h5>
+                  <small>用戶 : {article.user.username}</small>
+                </div>
+                <div className="card-body text-left">
+                  <p className="card-text">{article.content.substring(0, 100)}</p>
+                </div>
+                <div className="card-footer text-muted text-left">
+                  發文日期 {localPublishDate}
                 </div>
               </div>
-              <DropdownButton
-                align="end"
-                title="Actions"
-                id={`dropdown-actions-${article.id}`}
-                style={{ position: "absolute", right: "1rem", top: "1rem" }}
-              >
-                <Dropdown.Item onClick={() => updateArticleWithModal(article.id)}>Edit</Dropdown.Item>
-                <Dropdown.Item onClick={() => deleteArticle(article.id)}>Delete</Dropdown.Item>
-              </DropdownButton>
+                <DropdownButton
+                  align="end"
+                  title="選項"
+                  id={`dropdown-actions-${article.id}`}
+                  style={{ position: "absolute", right: "1rem", top: "1rem" }}
+                >
+                  <Dropdown.Item onClick={() => updateArticleWithModal(article.id)}>編輯</Dropdown.Item>
+                  <Dropdown.Item onClick={() => deleteArticle(article.id)}>刪除</Dropdown.Item>
+                </DropdownButton>
             </ListGroup.Item>
           );
         })}
-      </ListGroup>
+      </div>
     );
-  }
-  
+  };
 
   return (
     <div className="container">

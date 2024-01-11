@@ -83,21 +83,23 @@ export const ArticleContent = (props) => {
     return (
       <div className="row">
         <div className="col">
-          <h4>Comment</h4>
-          <Button className="mt-3 w-75" variant="primary" onClick={() => CreateCommentWithModal()}>留言</Button>
+          <div className="d-flex align-items-center">
+            <h4 className="text-left">留言區</h4>
+            <Button className="ml-3 btn-success" variant="primary" onClick={() => CreateCommentWithModal()}>留言</Button>
+          </div>
           <ListGroup className="mt-3">
             {comments.map((comment) => (
               <ListGroup.Item key={comment.id}>
                 <div className="row">
                   <div className="col-10">
-                    <p>{comment.user?.username}</p>
+                    <p style={{ fontSize: '1rem' ,fontWeight: 'bold'}}>{comment.user?.username}</p>
                     <p>{comment.content}</p>
                   </div>
                   <div className="col-2">
                     {comment.user.id === UserId && (
                       <Fragment>
-                        <Button variant="primary" onClick={() => UpdateCommentWithModal(comment.id)}>編輯</Button>
-                        <Button variant="danger" onClick={() => DeleteComment(comment.id)}>刪除</Button>
+                        <Button className="mt-3 mr-2" variant="primary" onClick={() => UpdateCommentWithModal(comment.id)}>編輯</Button>
+                        <Button className="mt-3" variant="danger" onClick={() => DeleteComment(comment.id)}>刪除</Button>
                       </Fragment>
                     )}
                   </div>
@@ -114,29 +116,33 @@ export const ArticleContent = (props) => {
 
   // 文章內容
   return (
-    <div>
-      <h1>{articleTitle}</h1>
-      <h3>{articleUsername}</h3>
-      <h5>{articlePublishDate}</h5>
-      <p>{articleContent}</p>
+    <div className="card" style={{ margin: '20px', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', padding: '20px', borderRadius: '10px'}}>
+      <div className="article">
+        <h1 className="text-left" style={{ fontSize: '3rem' ,fontWeight: 'bold'}}>{articleTitle}</h1>
+        <h3 className="text-left">{articleUsername}</h3>
+        <h5 className="text-left">{articlePublishDate}</h5>
+        <p className="text-left">{articleContent}</p>
+      </div>
       <hr />
-      <CommentBox 
-        comments = {comments}
-        UserId = {UserId}
-        UpdateCommentWithModal = {UpdateCommentWithModal}  
-      />
-      <CommentModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        backdrop="static"
-        title={modalTittle}
-        mode={modelMode}
-        articleId={id}
-        userId={UserId}
-        isLoggedIn={isLoggedIn}
-        comment = {comment}
-        setComment = {setComment}
-      />
+      <div className="article mb-2">
+        <CommentBox 
+          comments = {comments}
+          UserId = {UserId}
+          UpdateCommentWithModal = {UpdateCommentWithModal}  
+        />
+        <CommentModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          backdrop="static"
+          title={modalTittle}
+          mode={modelMode}
+          articleId={id}
+          userId={UserId}
+          isLoggedIn={isLoggedIn}
+          comment = {comment}
+          setComment = {setComment}
+        />
+      </div>
     </div>
   );
 };

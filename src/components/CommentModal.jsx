@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ListGroup } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -83,22 +84,24 @@ export const CommentModal = (props) => {
   const { register, setValue, handleSubmit, watch, reset } = useForm();
 
   return (
-    <div id="ArticleModal-div">
+    <div id="ArticleModal-div" className='card text-center'>
       <Modal
         show={props.show}
         onHide={handleClose}
         backdrop={props.backdrop}
         title={props.title}
-
         size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        style={{ backgroundColor: "#f8f9fa" }}
       >
         <Modal.Header>
           <Container>
             <Row>
               <Col xs={12} md={11}>
-                <Modal.Title id="contained-modal-title-vcenter">{props.title}</Modal.Title>
+                <Modal.Title id="contained-modal-title-vcenter" style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+                  {props.title}
+                </Modal.Title>
               </Col>
             </Row>
           </Container>
@@ -106,20 +109,21 @@ export const CommentModal = (props) => {
         <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <InputGroup key="content">
-              <InputGroup.Text id="content">留言</InputGroup.Text>
+              <InputGroup.Text id="content" style={{ backgroundColor: '#e9ecef', borderColor: '#ced4da' }}>留言</InputGroup.Text>
               <Form.Control
                 placeholder="請輸入留言內容"
                 aria-label="content"
                 aria-describedby="content"
                 defaultValue={CommentContent}
                 {...register('content')}
+                style={{ borderColor: '#ced4da' }}
               />
             </InputGroup>
             <br />
             <Button
               type="submit"
-              className="btn btn-dark"
-              style={{ borderRightWidth: '10px', borderColor: '#fff' }}
+              className="btn btn-primary"
+              style={{ marginTop: '10px', borderRadius: '5px', fontWeight: 'bold' }}
             >
               {props.mode === 'update' ? '修改' : '確認'}
             </Button>
@@ -128,9 +132,8 @@ export const CommentModal = (props) => {
         <Modal.Footer>
           <Container>
             <Row>
-              <Col xs={12} md={11}></Col>
-              <Col xs={6} md={1}>
-                <Button onClick={handleClose} className="btn btn-dark">
+              <Col xs={{ span: 11, offset: 1 }} md={{ span: 1, offset: 11 }}>
+                <Button onClick={handleClose} className="btn btn-secondary" style={{ borderRadius: '5px' }}>
                   取消
                 </Button>
               </Col>

@@ -153,7 +153,7 @@ export const ArticleModal = (props) => {
             <Button
               type="submit"
               className="btn btn-dark"
-              style={{ borderRightWidth: '10px', borderColor: '#fff' }}
+              style={{  borderColor: '#fff' }}
             >
               {props.mode === 'update' ? '修改' : '上傳文章'}
             </Button>

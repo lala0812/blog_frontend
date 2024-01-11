@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -18,8 +18,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -39,5 +39,171 @@
 
 .custom-modal {
   right: 0;
-  margin-right: 20px; /* 可以根據需要調整右邊邊距 */
+  margin-right: 20px;
+}
+
+.list-group-container {
+  background-color: #f4f6f8;
+}
+
+.title {
+  margin: 20px 0;
+}
+
+.title h1 {
+  font-size: 2.5rem; 
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.App-bg {
+  background-color: #ecbb91;
+  padding-bottom: 10px;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #eb732d;
+  padding: '10px 0';
+}
+
+.article{
+  min-height: 60vh;
+}
+/*************************************************************************************************/
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+}
+.login-form-button {
+  margin-top: 20px;
+  height: 40px;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent; 
+  border: 1px solid #000; 
+  color: #000; 
+}
+
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.login-container {
+  padding-top: 60%;
+  width: 20%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+h1 {
+  text-align: center;
+}
+
+
+.login-form-button1 {
+background-color: transparent;
+border: 1px solid #ccc;
+padding: 10px 20px;
+color: #000;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+margin-left: auto; /* 讓按鈕向右浮動 */
+}
+.input-group-text {
+  margin-right: 0;
+}
+.login-form-button1 {
+background-color: transparent; 
+border: 1px solid #ccc; 
+padding: 10px 20px; 
+color: #000; 
+text-align: center; 
+text-decoration: none; 
+display: inline-block; 
+
+}
+
+.login-page1 {
+display: flex;
+align-items: center;
+justify-content: flex-start; /*靠左*/
+height: 100vh;
+background-color: #f4f4f4;
+padding-left: 50px; /*左邊有留白*/
+padding-top: 20px;
+}
+
+.login-container1 {
+  box-Shadow: '0 4px 8px 0 rgba(0,0,0,0.2)';
+  border-Radius: '10px';
+  background-color: #fff;
+  margin-left: 40vh;
+  width: 60%; /* 調整框框寬度 */
+  border: 1px solid #ccc;
+  padding: 50px; /* 設置內邊距 */
+}
+.user-info {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  min-width: 120px; /* 調整寬度，根據你的需要 */
+}
+
+.avatar {
+width: 50px;
+height: 50px;
+margin-right: 10px; /* 調整圖片右邊間距 */
+}
+
+.info {
+flex: 1; /* 剩餘空間充滿 */
+}
+
+
+.input-group {
+display: flex;
+align-items: center;
+}
+
+
+.container-title {
+display: flex;
+align-items: center;
+}
+
+.input-section {
+display: flex;
+justify-content: space-between;
+width: 50%; /* 調整寬度，根據你的需要 */
+}
+
+.input-section input,
+.input-section button,
+.input-section .login-form-button1 {
+flex: 1;
+margin-right: 5px; /* 調整間距，根據你的需要 */
 }

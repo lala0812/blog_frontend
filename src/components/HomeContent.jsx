@@ -68,7 +68,7 @@ export const HomeContent = (props) =>{
   
   // 建立文章Modal
   async function createArticleWithModal() {
-    setModalTittle("Create Article");
+    setModalTittle("新增文章");
     setModalMode("create");
     setModalShow(true);
   }
@@ -87,27 +87,32 @@ export const HomeContent = (props) =>{
   // 文章列表
   const ArticleList = ({ articles }) => {
     return (
-      <ListGroup>
+      <div className="bd-example m-0 card border-1 mt-3">
         {articles.map((article) => {
           const dateObject = new Date(article.publish_date);
-          const localPublishDate = dateObject.toLocaleString();
-  
+          const localPublishDate = dateObject.toLocaleDateString('zh-tw', { year: 'numeric', month: 'long', day: 'numeric' });
+    
           return (
-            <ListGroup.Item key={article.id} onClick={()=>{handleArticleClick(article.id)}}>
-              <div className="row">
-                <div className="col">
-                  <p>{article.user.username}</p>
-                  <h4>{article.title}</h4>
-                  <p>{article.content}</p>
-                  <p>{localPublishDate}</p>
+            <ListGroup.Item key={article.id} onClick={()=>{handleArticleClick(article.id)}} className="mb-3 mt-3 mr-3 ml-3">
+              <div className="card">
+                <div className="card-header text-left"> 
+                  <h5 className="card-title">{article.title}</h5>
+                  <small>用戶 : {article.user.username}</small>
+                </div>
+                <div className="card-body text-left">
+                  <p className="card-text">{article.content.substring(0, 100)}</p>
+                </div>
+                <div className="card-footer text-muted text-left">
+                  發文日期 {localPublishDate}
                 </div>
               </div>
             </ListGroup.Item>
           );
         })}
-      </ListGroup>
+      </div>
     );
   };
+  
 
   const buttonStyle = {
     position: 'fixed',
@@ -123,7 +128,7 @@ export const HomeContent = (props) =>{
   };
 
   return (
-    <div className="container" style={{backgroundColor: "white"}}>
+    <div className="container">
       <ArticleList articles={filteredArticles} />
       {loginUserId && (
         <Button variant="primary" style={buttonStyle} onClick={createArticleWithModal}/>

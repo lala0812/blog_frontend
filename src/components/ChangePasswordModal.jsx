@@ -54,6 +54,7 @@ export const ChangePasswordModal = (props) => {
     resJson = await ChangePassword(changePasswordObj);
     if (resJson.message == "change password success") {
         alert("更改密碼成功");
+        window.location.href = "/setting";
     } else if (resJson.message == "User does not exist.") {
         alert("使用者不存在");
         // window.location.href = "/login";
@@ -159,7 +160,7 @@ export const ChangePasswordModal = (props) => {
             <Button
               type="submit"
               className="btn btn-dark"
-              style={{ borderRightWidth: '10px', borderColor: '#fff' }}
+              style={{borderColor: '#fff' }}
             >
               確認
             </Button>

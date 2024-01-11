@@ -45,27 +45,30 @@ function BlogNavbar(props) {
 
 
   const dropdownButtonStyle = {
+    backgroundColor: 'white',
+    backgroundImage: `url(${process.env.PUBLIC_URL}/w580.jpg)`,
+    backgroundSize: 'cover',
     marginLeft: '30px',
     width: '45px',
     height: '45px',
-    background: 'white',
     cursor: 'pointer',
-    borderRadius: '50%', // 設置為 50% 以形成圓形
+    borderRadius: '50%', // 设置为 50% 以形成圆形
   };
+  
   
   
   
 
   return (
     <Fragment>
-      <Navbar expand="lg" bg="dark" variant="dark" style={{padding: '10px 0'}}>
+      <Navbar expand="lg" className='navbar' variant="dark">
         <Container>
-          <img src="https://img.toy-people.com/member/169959298113_1200.jpg" alt="logo" width="60" height="60" className="d-inline-block align-text-top" />
-          <Navbar.Brand href="/" style={{fontSize:"30px"}}>Blog</Navbar.Brand>
+          <img src={`${process.env.PUBLIC_URL}/P1627101587633_4_12744084.jpeg`} alt="logo" width="60" height="60" className="d-inline-block align-text-top" />
+          <Navbar.Brand href="/" className="ml-3" style={{fontSize:"30px"}}>Blog</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/"style={{fontSize:"20px"}}>Home</Nav.Link>
+              <Nav.Link href="/"style={{fontSize:"20px"}}>首頁</Nav.Link>
               </Nav>
               {
                 location.pathname === '/' && (
@@ -73,11 +76,11 @@ function BlogNavbar(props) {
                     <Form inline className="text-white mr-3">
                       <Form.Control
                         type="text"
-                        placeholder="Search"
+                        placeholder="搜尋文章標題"
                         onChange={handleSearchChange}
-                      />
+                      />  
                     </Form>
-                    <Button onClick={handleSearchClick}>Search</Button>
+                    <Button onClick={handleSearchClick}>搜尋</Button>
                   </>
                 )
               }
@@ -88,15 +91,15 @@ function BlogNavbar(props) {
                 <Fragment>
                   <p>{}</p>
                   <NavDropdown style={dropdownButtonStyle} id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/MyArticles">My Articles</NavDropdown.Item>
-                    <NavDropdown.Item href="/Setting">Setting</NavDropdown.Item>
-                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                    <NavDropdown.Item href="/MyArticles">我的文章</NavDropdown.Item>
+                    <NavDropdown.Item href="/Setting">設定</NavDropdown.Item>
+                    <NavDropdown.Item onClick={handleLogout}>登出</NavDropdown.Item>
                   </NavDropdown>
                 </Fragment>
                 ) : (
                   <Fragment>
-                    <Nav.Link href="/Login">Login</Nav.Link>
-                    <Nav.Link href="/Register">Register</Nav.Link>
+                    <Nav.Link href="/Login">登入</Nav.Link>
+                    <Nav.Link href="/Register">註冊</Nav.Link>
                   </Fragment>
                 )
               }

@@ -5,6 +5,7 @@ import { Form } from 'react-bootstrap';
 import { useForm} from 'react-hook-form'; 
 import { useState } from 'react';
 import { Register } from '../controller/UserControl';
+ 
 
 export function RegisterContent() {
     
@@ -59,19 +60,16 @@ export function RegisterContent() {
 
     return (
         
-        <div className="container" style={{marginTop:'50px', marginLeft:'375px'}}>
-            <div className='text'>
-                <h2>註冊</h2>
-            </div>
-            <div className='form' style={container}>
+        <div className="login-page text-center">
+            <div className='login-container'>
+                        <h1>Register</h1>
+
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <InputGroup key = 'username'>
-                        <InputGroup.Text id="usernameText" style={inputText}>
-                            <div style={{ ...inputText, textAlign: 'right' }}>使用者名稱：</div>
-                        </InputGroup.Text>
+
 
                         <Form.Control
-                            placeholder='請輸入使用者名稱'
+                            placeholder='Username'
                             aria-label='Username'
                             aria-describedby='username'
                             name='username'
@@ -81,11 +79,9 @@ export function RegisterContent() {
                     </InputGroup>
                     <br/>
                     <InputGroup key = 'email'>
-                        <InputGroup.Text id='email' style={inputText}>
-                        <div style={{ ...inputText, textAlign: 'right' }}>電子郵件：</div>
-                        </InputGroup.Text>
+
                         <Form.Control
-                            placeholder='請輸入電子郵件'
+                            placeholder='Email'
                             aria-label='email'
                             aria-describedby='email'
                             name='email'
@@ -95,11 +91,9 @@ export function RegisterContent() {
                     </InputGroup>
                     <br/>
                     <InputGroup key = 'password'>
-                        <InputGroup.Text id='password'style={inputText}>
-                            <div style={{ ...inputText, textAlign: 'right' }}>密碼：</div>
-                        </InputGroup.Text>
+
                         <Form.Control
-                            placeholder='請輸入密碼'
+                            placeholder='Password'
                             aria-label='password'
                             aria-describedby='password'
                             name='password'
@@ -109,11 +103,9 @@ export function RegisterContent() {
                     </InputGroup>
                     <br/>
                     <InputGroup key = 'checkpassword'>
-                        <InputGroup.Text id='checkpassword' style={inputText}>
-                            <div style={{ ...inputText, textAlign: 'right' }}>密碼確認：</div>
-                        </InputGroup.Text>
+
                         <Form.Control
-                            placeholder='請再輸入一次密碼'
+                            placeholder='Password confirm'
                             aria-label='checkpassword'
                             aria-describedby='checkpassword'
                             name='checkpassword'
@@ -123,7 +115,7 @@ export function RegisterContent() {
                     </InputGroup>
             
                     <br/>
-                    <Button type='submit'>註冊</Button>
+                    <Button type='submit' className="login-form-button">註冊</Button>
                 </Form>
             </div>
         </div>

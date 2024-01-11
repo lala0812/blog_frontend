@@ -50,8 +50,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      
+    // <div className="App" style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/w580.jpg')`, backgroundSize: 'cover' }}>
+    <div className="App App-bg">
       <BrowserRouter>
       <SearchContext.Provider value={{ searchQuery, setSearchQuery, filteredArticles }}>
         <BlogNavbar isLoggedIn={isLoggedIn} Logout={handleLogout} loginUserId={loginUserId} />  
